@@ -5,6 +5,7 @@ function create_table(){
         const ele = document.createElement("div"+i);
         ele.innerHTML= "Hello world";
         ele.style.background = "green";
+        ele.className = "elem";
         const bodi = document.getElementById("cont");
         bodi.appendChild(ele);
     }

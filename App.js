@@ -1,3 +1,5 @@
+let positions = ["0","1","2","3","4","5","6","7","8","9"]
+let k = 0;
 function create_table(){
     const button = document.getElementById("Start");
     button.remove();
@@ -6,9 +8,19 @@ function create_table(){
         ele.innerHTML= "Hello world";
         ele.style.background = "green";
         ele.className = "elem";
-        ele.id="div"+i;
+        ele.id=""+i;
+        ele.tagName = "available";
+        ele.onclick = function(){
+            if(k%2==0){
+                ele.innerHTML = "X";
+                k+=1;
+            }
+            else{
+                ele.innerHTML = "O";
+                k+=1;
+            }
+        };
         const bodi = document.getElementById("cont");
         bodi.appendChild(ele);
     }
-
 }

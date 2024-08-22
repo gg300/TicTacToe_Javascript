@@ -9,7 +9,6 @@ function create_table(){
         ele.style.background = "green";
         ele.className = "elem";
         ele.id=""+i;
-        ele.tagName = "available";
         ele.onclick = function(){
             if(k%2==0){
                 ele.innerHTML = "X";

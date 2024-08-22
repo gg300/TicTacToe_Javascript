@@ -1,4 +1,5 @@
 let positions = ["0","1","2","3","4","5","6","7","8","9"]
+let x_o = ""
 let k = 0;
 function create_table(){
     const button = document.getElementById("Start");
@@ -11,14 +12,15 @@ function create_table(){
         ele.id=""+i;
         ele.onclick = function(){
             if(ele.innerHTML == ""){
+                x_o="O";
             if(k%2==0){
-                ele.innerHTML = "X";
-                k+=1;
+                x_o = "X";
             }
-            else{
-                ele.innerHTML = "O";
-                k+=1;
-            }}
+            k+=1;
+            ele.innerHTML = x_o;
+            positions[Number(ele.id)] = x_o;
+            console.log(positions);
+        }
         };
         const bodi = document.getElementById("cont");
         bodi.appendChild(ele);

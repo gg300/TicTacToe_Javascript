@@ -8,7 +8,19 @@ function posit(i){
         result = Math.trunc(i/3) * 10+3;
     return result;
 }
-
+function Win(){
+    let ok = true;
+    for(let i=1;i<3;i++){
+        for(let j=1;j<3;j++){
+            if(i==j){
+                if(positions[i][j]!=positions[i+1][j+1]){
+                    ok=false;
+                }
+        }
+    }}
+        if(ok==true)
+            document.getElementById("body").remove();
+}
 function create_table(){
     const button = document.getElementById("Start");
     button.remove();
@@ -27,7 +39,8 @@ function create_table(){
             k+=1;
             ele.innerHTML = x_o;
             positions[Math.trunc(Number(ele.id)/10)][Number(ele.id)%10] = x_o;
-            console.log(positions);
+            if(k>4)
+                Win();
         }
         };
         const bodi = document.getElementById("cont");

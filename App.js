@@ -8,8 +8,8 @@ function posit(i){
         result = Math.trunc(i/3) * 10+3;
     return result;
 }
-function Win(){
-    let ok = true;
+function primary_diag(ok){
+    ok=true;
     for(let i=1;i<3;i++){
         for(let j=1;j<3;j++){
             if(i==j){
@@ -18,8 +18,31 @@ function Win(){
                 }
         }
     }}
+    return ok;
+}
+function sec_diag(ok){
+    ok=true;
+    for(let i=1;i<=2;i++){
+        for(let j=2;j<=3;j++){
+            if(i+j==4){
+                if(positions[i][j]!=positions[i+1][j-1]){
+                    ok=false;
+                }
+        }
+    }}
+    return ok;
+}
+function Win(){
+    let ok = true;
+    ok = primary_diag(ok);
         if(ok==true)
-            document.getElementById("body").remove();
+            {document.getElementById("body").remove();}
+        else
+        {
+            ok = sec_diag(ok);
+                if(ok==true)
+                    document.getElementById("body").remove();
+        }
 }
 function create_table(){
     const button = document.getElementById("Start");
@@ -39,7 +62,6 @@ function create_table(){
             k+=1;
             ele.innerHTML = x_o;
             positions[Math.trunc(Number(ele.id)/10)][Number(ele.id)%10] = x_o;
-            if(k>4)
                 Win();
         }
         };

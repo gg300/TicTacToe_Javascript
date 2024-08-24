@@ -1,6 +1,14 @@
-let positions = ["0","1","2","3","4","5","6","7","8","9"]
+let positions = [["0","0","0","0"],["0","1","2","3"],["0","4","5","6"],["0","7","8","9"]]
 let x_o = ""
 let k = 0;
+function posit(i){
+    let result = 0;
+    result = (Math.trunc(i/3)+1) * 10 + i%3;
+    if((i%3)==0)
+        result = Math.trunc(i/3) * 10+3;
+    return result;
+}
+
 function create_table(){
     const button = document.getElementById("Start");
     button.remove();
@@ -9,7 +17,7 @@ function create_table(){
         ele.innerHTML= "";
         ele.style.background = "green";
         ele.className = "elem";
-        ele.id=""+i;
+        ele.id=""+posit(i);
         ele.onclick = function(){
             if(ele.innerHTML == ""){
                 x_o="O";
@@ -18,7 +26,7 @@ function create_table(){
             }
             k+=1;
             ele.innerHTML = x_o;
-            positions[Number(ele.id)] = x_o;
+            positions[Math.trunc(Number(ele.id)/10)][Number(ele.id)%10] = x_o;
             console.log(positions);
         }
         };

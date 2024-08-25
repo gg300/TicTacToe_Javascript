@@ -8,41 +8,47 @@ function posit(i){
         result = Math.trunc(i/3) * 10+3;
     return result;
 }
-function primary_diag(ok){
-    ok=true;
+function primary_diag(){
     for(let i=1;i<3;i++){
         for(let j=1;j<3;j++){
             if(i==j){
                 if(positions[i][j]!=positions[i+1][j+1]){
-                    ok=false;
+                    return false;
                 }
         }
     }}
-    return ok;
+    return true;
 }
-function sec_diag(ok){
-    ok=true;
+function sec_diag(){
     for(let i=1;i<=2;i++){
         for(let j=2;j<=3;j++){
             if(i+j==4){
                 if(positions[i][j]!=positions[i+1][j-1]){
-                    ok=false;
+                    return false;
                 }
         }
     }}
-    return ok;
+    return true;
 }
-function Win(){
-    let ok = true;
-    ok = primary_diag(ok);
-        if(ok==true)
-            {document.getElementById("body").remove();}
-        else
-        {
-            ok = sec_diag(ok);
-                if(ok==true)
-                    document.getElementById("body").remove();
-        }
+function col_w(i){
+        if((positions[i][1]!=positions[i][2]) || (positions[i][2]!=positions[i][3]))
+            return false;
+    return true;
+}
+function row_w(j){
+    if((positions[1][j]!=positions[2][j]) || (positions[2][j]!=positions[3][j]))
+        return false;
+    return true;
+}
+function Win(i,j){
+    if(primary_diag()==true)
+        {document.getElementById("body").remove();}
+    if(sec_diag()==true)
+        {document.getElementById("body").remove();}
+    if(row_w(j)==true)
+        {document.getElementById("body").remove();}
+    if(col_w(i)==true)
+        {document.getElementById("body").remove();}    
 }
 function create_table(){
     const button = document.getElementById("Start");
@@ -62,7 +68,7 @@ function create_table(){
             k+=1;
             ele.innerHTML = x_o;
             positions[Math.trunc(Number(ele.id)/10)][Number(ele.id)%10] = x_o;
-                Win();
+                Win(Math.trunc(Number(ele.id)/10,),Number(ele.id)%10)  ///////last pos to be added
         }
         };
         const bodi = document.getElementById("cont");

@@ -48,7 +48,19 @@ function Win(i,j){
     if(row_w(j)==true)
         {document.getElementById("body").remove();}
     if(col_w(i)==true)
-        {document.getElementById("body").remove();}    
+        {document.getElementById("body").remove();
+            if(k%2!=0){
+                const win = document.createElement("body");
+                win.innerHTML = "Player 1 Win"
+                document.getElementById("html").appendChild(win);
+            }
+            else{
+                const win = document.createElement("body");
+                win.innerHTML = "Player 2 Win"
+                document.getElementById("html").appendChild(win);
+            }
+
+        }    
 }
 function create_table(){
     const button = document.getElementById("Start");

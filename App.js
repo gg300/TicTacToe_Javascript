@@ -40,26 +40,34 @@ function row_w(j){
         return false;
     return true;
 }
+function pp_win(k){
+    if(k!=0){
+        const win = document.createElement("body");
+        win.innerHTML = "Player 1 Win"
+        document.getElementById("html").appendChild(win);
+    }
+    else{
+        const win = document.createElement("body");
+        win.innerHTML = "Player 2 Win"
+        document.getElementById("html").appendChild(win);
+    }
+}
 function Win(i,j){
     if(primary_diag()==true)
-        {document.getElementById("body").remove();}
+        {document.getElementById("body").remove();
+            pp_win(k%2);
+        }
     if(sec_diag()==true)
-        {document.getElementById("body").remove();}
+        {document.getElementById("body").remove();
+            pp_win(k%2);
+        }
     if(row_w(j)==true)
-        {document.getElementById("body").remove();}
+        {document.getElementById("body").remove();
+            pp_win(k%2);
+        }
     if(col_w(i)==true)
         {document.getElementById("body").remove();
-            if(k%2!=0){
-                const win = document.createElement("body");
-                win.innerHTML = "Player 1 Win"
-                document.getElementById("html").appendChild(win);
-            }
-            else{
-                const win = document.createElement("body");
-                win.innerHTML = "Player 2 Win"
-                document.getElementById("html").appendChild(win);
-            }
-
+            pp_win(k%2);
         }    
 }
 function create_table(){
